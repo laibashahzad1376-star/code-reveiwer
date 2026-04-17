@@ -1,23 +1,6 @@
-# AI-Powered Code Reviewer & Bug Explainer
+# AI Code Reviewer
 
-This project helps students understand programming mistakes by:
-- Detecting bugs
-- Explaining issues
-- Analyzing time complexity
-- Suggesting optimized code
+This is a simple AI-powered code reviewer project built with Streamlit.
 
-## Run Locally
-
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-
----
-
-# 5. Run the App
-
-In terminal:
-
-```bash
-pip install -r requirements.txt
+## Run:
 streamlit run app.py
