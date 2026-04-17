@@ -1,6 +1,13 @@
-# AI Code Reviewer
+# AI-Powered Code Reviewer & Bug Explainer
 
-This is a simple AI-powered code reviewer project built with Streamlit.
+A professional Streamlit app that reviews code snippets, detects bugs, explains issues, analyzes complexity, and suggests optimized code.
 
-## Run:
+## Features
+- Bug Detection
+- Bug Explanation
+- Complexity Analysis
+- Optimization Suggestions
+
+## Run Locally
+```bash
 streamlit run app.py
