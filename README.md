@@ -1,13 +1,12 @@
-# AI-Powered Code Reviewer & Bug Explainer
+# AI Code Reviewer Pro
 
-A professional Streamlit app that reviews code snippets, detects bugs, explains issues, analyzes complexity, and suggests optimized code.
+A real AI-powered multi-language code reviewer built with Streamlit + Groq API.
 
 ## Features
-- Bug Detection
+- Real Bug Detection
 - Bug Explanation
 - Complexity Analysis
 - Optimization Suggestions
 
-## Run Locally
-```bash
+## Run
 streamlit run app.py
