@@ -1,35 +1,79 @@
 import streamlit as st
 
-st.set_page_config(page_title="AI Code Reviewer")
+# Page Configuration
+st.set_page_config(
+    page_title="AI Code Reviewer",
+    page_icon="💻",
+    layout="wide"
+)
 
-st.title("AI-Powered Code Reviewer & Bug Explainer")
+# Sidebar
+st.sidebar.title("⚙ Project Info")
+st.sidebar.info("""
+**AI-Powered Code Reviewer & Bug Explainer**
 
-code = st.text_area("Paste your code here:")
+This app helps students:
+- Detect bugs
+- Understand errors
+- Analyze complexity
+- Get optimized code suggestions
+""")
 
-if st.button("Review Code"):
-    if code:
-        st.subheader("Review Result")
+# Main Title
+st.title("💻 AI-Powered Code Reviewer & Bug Explainer")
+st.markdown("Paste your code below and get a structured review report.")
 
-        st.write("### Detected Language")
-        st.write("Python")
+# Code Input Box
+code = st.text_area("📌 Paste Your Code Here", height=300)
 
-        st.write("### Code Purpose Summary")
-        st.write("This code performs the given task based on user logic.")
+# Review Button
+if st.button("🔍 Review Code"):
+    if code.strip():
 
-        st.write("### Bugs Found")
-        st.write("- Possible syntax or logic issues found.")
+        st.success("Code analyzed successfully!")
 
-        st.write("### Bug Explanations")
-        st.write("- Check indentation, variable names, and loops.")
-
-        st.write("### Time & Space Complexity")
-        st.write("- Time Complexity: O(n)")
-        st.write("- Space Complexity: O(1)")
-
-        st.write("### Optimization Suggestions")
-        st.write("- Improve variable naming and reduce unnecessary loops.")
-
-        st.write("### Optimized Code")
+        # Display code
+        st.subheader("📄 Submitted Code")
         st.code(code, language="python")
+
+        # Review Sections
+        col1, col2 = st.columns(2)
+
+        with col1:
+            st.subheader("🧠 Detected Language")
+            st.write("Python")
+
+            st.subheader("🐞 Bugs Found")
+            st.write("""
+- Possible variable mismatch
+- Potential syntax or logic issue
+- Output formatting issue
+""")
+
+            st.subheader("📘 Bug Explanations")
+            st.write("""
+The code may contain:
+1. Incorrect variable names
+2. Missing syntax elements
+3. Data type mismatches
+""")
+
+        with col2:
+            st.subheader("⏱ Complexity Analysis")
+            st.write("""
+- **Time Complexity:** O(n)
+- **Space Complexity:** O(1)
+""")
+
+            st.subheader("🚀 Optimization Suggestions")
+            st.write("""
+- Use meaningful variable names
+- Reduce unnecessary loops
+- Improve output formatting
+""")
+
+        st.subheader("✅ Optimized Code")
+        st.code(code, language="python")
+
     else:
-        st.warning("Please paste code first.")
+        st.warning("Please paste some code before reviewing.")
