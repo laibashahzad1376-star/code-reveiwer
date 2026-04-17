@@ -1,0 +1,35 @@
+import openai
+
+# Set your OpenAI API Key
+openai.api_key = "YOUR_OPENAI_API_KEY"
+
+def review_code(code):
+    prompt = f"""
+You are an AI-Powered Code Reviewer and Bug Explainer.
+
+Analyze the following code and provide:
+
+1. Detected Language
+2. Code Purpose Summary
+3. Bugs Found
+4. Bug Explanations
+5. Time & Space Complexity
+6. Optimization Suggestions
+7. Optimized Code
+
+Code:
+{code}
+
+Make explanations simple and educational for students.
+"""
+
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are an expert programming teacher and code reviewer."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.3
+    )
+
+    return response['choices'][0]['message']['content']
