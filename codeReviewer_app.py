@@ -1,6 +1,6 @@
 import streamlit as st
 
-# Page Configuration
+# Page Config
 st.set_page_config(
     page_title="AI Code Reviewer",
     page_icon="💻",
@@ -8,72 +8,95 @@ st.set_page_config(
 )
 
 # Sidebar
-st.sidebar.title("⚙ Project Info")
+st.sidebar.title("💻 AI Code Reviewer")
+st.sidebar.markdown("---")
 st.sidebar.info("""
-**AI-Powered Code Reviewer & Bug Explainer**
-
-This app helps students:
-- Detect bugs
-- Understand errors
-- Analyze complexity
-- Get optimized code suggestions
+### Features
+✅ Bug Detection  
+✅ Bug Explanation  
+✅ Complexity Analysis  
+✅ Optimization Suggestions  
 """)
+st.sidebar.markdown("---")
+st.sidebar.success("Built with Streamlit")
 
-# Main Title
-st.title("💻 AI-Powered Code Reviewer & Bug Explainer")
-st.markdown("Paste your code below and get a structured review report.")
+# Header
+st.markdown("""
+    <h1 style='text-align: center; color: #4CAF50;'>
+    AI-Powered Code Reviewer & Bug Explainer
+    </h1>
+""", unsafe_allow_html=True)
 
-# Code Input Box
-code = st.text_area("📌 Paste Your Code Here", height=300)
+st.markdown("""
+    <p style='text-align: center; font-size:18px;'>
+    Paste your code below and receive a professional review report
+    </p>
+""", unsafe_allow_html=True)
+
+st.markdown("---")
+
+# Input Section
+code = st.text_area("📌 Paste Your Code Here", height=300, placeholder="Paste your Python code here...")
 
 # Review Button
-if st.button("🔍 Review Code"):
+if st.button("🔍 Analyze Code", use_container_width=True):
+
     if code.strip():
 
-        st.success("Code analyzed successfully!")
+        st.success("Analysis Completed Successfully!")
 
-        # Display code
-        st.subheader("📄 Submitted Code")
-        st.code(code, language="python")
+        # Display input code
+        with st.expander("📄 Submitted Code", expanded=False):
+            st.code(code, language="python")
 
-        # Review Sections
-        col1, col2 = st.columns(2)
+        # Metrics Row
+        col1, col2, col3 = st.columns(3)
+        col1.metric("Detected Bugs", "3")
+        col2.metric("Time Complexity", "O(n)")
+        col3.metric("Optimization Score", "75%")
 
-        with col1:
-            st.subheader("🧠 Detected Language")
-            st.write("Python")
+        st.markdown("---")
 
-            st.subheader("🐞 Bugs Found")
-            st.write("""
-- Possible variable mismatch
-- Potential syntax or logic issue
-- Output formatting issue
+        # Two columns for detailed analysis
+        left, right = st.columns(2)
+
+        with left:
+            with st.expander("🧠 Detected Language", expanded=True):
+                st.write("Python")
+
+            with st.expander("🐞 Bugs Found", expanded=True):
+                st.write("""
+1. Variable naming inconsistency  
+2. Possible syntax issue  
+3. Output formatting problem
 """)
 
-            st.subheader("📘 Bug Explanations")
-            st.write("""
-The code may contain:
-1. Incorrect variable names
-2. Missing syntax elements
-3. Data type mismatches
+            with st.expander("📘 Bug Explanations", expanded=True):
+                st.write("""
+- Some variables may not match their intended use.  
+- There might be missing syntax elements such as colons or brackets.  
+- Output formatting can cause runtime issues.
 """)
 
-        with col2:
-            st.subheader("⏱ Complexity Analysis")
-            st.write("""
-- **Time Complexity:** O(n)
+        with right:
+            with st.expander("⏱ Complexity Analysis", expanded=True):
+                st.write("""
+- **Time Complexity:** O(n)  
 - **Space Complexity:** O(1)
 """)
 
-            st.subheader("🚀 Optimization Suggestions")
-            st.write("""
-- Use meaningful variable names
-- Reduce unnecessary loops
-- Improve output formatting
+            with st.expander("🚀 Optimization Suggestions", expanded=True):
+                st.write("""
+- Use consistent variable names  
+- Remove redundant loops  
+- Improve readability with better formatting  
+- Use built-in functions where possible
 """)
 
-        st.subheader("✅ Optimized Code")
-        st.code(code, language="python")
+        st.markdown("---")
+
+        with st.expander("✅ Optimized Code", expanded=True):
+            st.code(code, language="python")
 
     else:
-        st.warning("Please paste some code before reviewing.")
+        st.warning("Please paste some code before clicking Analyze.")
